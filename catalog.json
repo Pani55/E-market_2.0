@@ -1,0 +1,104 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+      "name": "Шины",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 8,
+    "fields": {
+      "name": "Электрика",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 9,
+    "fields": {
+      "name": "Моторные масла",
+      "description": "Масла для бензиновых ДВС"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+      "name": "Pirelli ClubSport Grip-Pro",
+      "description": "",
+      "photo": "",
+      "category": 6,
+      "price": 10000,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+      "name": "Michlein pro-sport",
+      "description": "",
+      "photo": "",
+      "category": 6,
+      "price": 7990,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 10,
+    "fields": {
+      "name": "ZIC X-top 5w30 1L",
+      "description": "SN/CF Fully syntetic",
+      "photo": "",
+      "category": 9,
+      "price": 789,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+      "name": "Bardhal 5w40 1L",
+      "description": "SN/CF syntetic",
+      "photo": "product/photo/jbnzsrtdzed3mnrhroqjk8lc6d832hyu.jpg",
+      "category": 9,
+      "price": 985,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+      "name": "Лампочка",
+      "description": "Автомобильная лампочка, цоколь HB4. Светит сильно, свет холодный!",
+      "photo": "",
+      "category": 8,
+      "price": 750,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+      "name": "Свеча зажигания",
+      "description": "Свеча зажигания иридиевая",
+      "photo": "",
+      "category": 8,
+      "price": 2500,
+      "created_at": "2024-06-10",
+      "updated_at": "2024-06-10"
+    }
+  }
+]
