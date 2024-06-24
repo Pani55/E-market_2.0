@@ -96,8 +96,8 @@ class Blog(models.Model):
     )
     is_published = models.BooleanField(
         verbose_name="Опубликовано",
-        default=True
-    ),
+        default=False
+    )
     count_of_views = models.PositiveIntegerField(
         verbose_name="колличество просмотров",
         default=0
@@ -106,7 +106,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name = "Блог"
         verbose_name_plural = "Блоги"
-        ordering = ["-created_at", "-count_of_views"]
+        ordering = ["created_at", "count_of_views"]
 
     def __str__(self):
         return f"{self.title}, {self.slug}, {self.created_at}, {self.count_of_views}, {self.is_published}"
