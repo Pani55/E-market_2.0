@@ -2,7 +2,8 @@ from django.forms import inlineformset_factory
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.utils.text import slugify
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import (ListView, DetailView, CreateView,
+                                  UpdateView, DeleteView)
 
 from catalog.forms import ProductForm, VersionForm
 from catalog.models import Product, Category, Blog, Version
@@ -11,26 +12,14 @@ from catalog.models import Product, Category, Blog, Version
 class ProductListView(ListView):
     model = Product
 
+    def get_context_data(self, **kwargs):
+        context_data = super(ProductListView, self).get_context_data(**kwargs)
+        context_data['versions'] = Version.objects.all()
+        return context_data
+
 
 class ProductDetailView(DetailView):
     model = Product
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        ProductFormset = inlineformset_factory(Product, Version, form=VersionForm, extra=1)
-        if self.request.method == 'POST':
-            context_data['formset'] = ProductFormset(self.request.POST)
-        else:
-            context_data['formset'] = ProductFormset()
-        return context_data
-
-    def form_valid(self, form):
-        formset = self.get_context_data()['formset']
-        self.object = form.save()
-        if formset.is_valid():
-            formset.instance = self.object
-            formset.save()
-        return super().form_valid(form)
 
 
 class ProductCreateView(CreateView):
@@ -46,9 +35,11 @@ class ProductUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data(**kwargs)
-        ProductFormset = inlineformset_factory(Product, Version, VersionForm, extra=1)
+        ProductFormset = inlineformset_factory(Product, Version,
+                                               form=VersionForm, extra=1)
         if self.request.method == 'POST':
-            context_data['formset'] = ProductFormset(self.request.POST, instance=self.object)
+            context_data['formset'] = ProductFormset(self.request.POST,
+                                                     instance=self.object)
         else:
             context_data['formset'] = ProductFormset(instance=self.object)
         return context_data
@@ -62,10 +53,12 @@ class ProductUpdateView(UpdateView):
             formset.save()
             return super().form_valid(form)
         else:
-            return self.render_to_response(self.get_context_data(form=form, formset=formset))
+            return self.render_to_response(self.get_context_data(form=form,
+                                                                 formset=formset))
 
     def get_success_url(self):
-        return reverse('catalog:product_detail', args=[self.kwargs.get('pk')])
+        return reverse('catalog:product_detail',
+                       args=[self.kwargs.get('pk')])
 
 
 class ProductDeleteView(DeleteView):
@@ -110,7 +103,8 @@ class BlogUpdateView(UpdateView):
     success_url = reverse_lazy('catalog:blog_list')
 
     def get_success_url(self):
-        return reverse('catalog:blog_detail', args=[self.kwargs.get('pk')])
+        return reverse('catalog:blog_detail',
+                       args=[self.kwargs.get('pk')])
 
 
 class BlogDeleteView(DeleteView):
