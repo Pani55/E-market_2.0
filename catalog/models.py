@@ -109,7 +109,8 @@ class Blog(models.Model):
         ordering = ["created_at", "count_of_views"]
 
     def __str__(self):
-        return f"{self.title}, {self.slug}, {self.created_at}, {self.count_of_views}, {self.is_published}"
+        return (f"{self.title}, {self.slug}, {self.created_at},"
+                f" {self.count_of_views}, {self.is_published}")
 
 
 class Version(models.Model):
@@ -136,4 +137,5 @@ class Version(models.Model):
         ordering = ["product", "version_number"]
 
     def __str__(self):
-        return f"{self.product}, {self.version_number}, {self.version_name}, {self.is_active}"
+        return (f"{self.product}, {self.version_number},"
+                f" {self.version_name}, {self.is_active}")

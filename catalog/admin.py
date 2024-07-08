@@ -16,12 +16,14 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'created_at', 'count_of_views', 'slug', 'is_published')
+    list_display = ('id', 'title', 'created_at',
+                    'count_of_views', 'slug', 'is_published')
 
 
 @admin.register(Version)
 class VersionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'product', 'version_number', 'version_name', 'is_active')
+    list_display = ('id', 'product', 'version_number',
+                    'version_name', 'is_active')
 
 
 admin.site.site_header = "E-Market 2.0"
