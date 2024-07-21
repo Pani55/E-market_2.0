@@ -19,7 +19,7 @@
                             <div class="btn-group">
                                 <a class="btn btn-primary" href="{% url 'catalog:product_detail' product.pk %}"
                                    role="button">Подробнее</a>
-                                {% if user.is_authenticated %}
+                                {% if perms.product.can_cancel_publication and perms.product.can_edit_description and perms.product.can_edit_category or user == product.owner %}
                                 <a class="btn btn-secondary" href="{% url 'catalog:product_update' product.pk %}"
                                    role="button">Редактировать</a>
                                 <a class="btn btn-danger" href="{% url 'catalog:product_delete' product.pk %}"

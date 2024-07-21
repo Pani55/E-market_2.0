@@ -50,6 +50,10 @@ class Product(models.Model):
     price = models.IntegerField(
         verbose_name="Цена продукта"
     )
+    is_published = models.BooleanField(
+        verbose_name="Опубликовано",
+        default=False
+    )
     created_at = models.DateField(
         verbose_name="Дата создания",
         auto_now_add=True,
@@ -72,6 +76,11 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["category", "created_at", "updated_at", "price"]
+        permissions = [
+            ("can_cancel_publication", "Может отменять публикацию"),
+            ("can_edit_description", "Может редактировать описание"),
+            ("can_edit_category", "Может менять категорию"),
+        ]
 
     def __str__(self):
         return f"{self.name}, {self.category}, {self.price}"
